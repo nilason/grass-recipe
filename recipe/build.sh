@@ -25,7 +25,8 @@
   --with-python \
   --with-wxwidgets=$PREFIX/bin/wx-config \
   --with-libs=$PREFIX/lib \
-  --with-includes=$PREFIX/include
+  --with-includes=$PREFIX/include \
+  --with-nls
 
 #  --with-proj \
 # --with-macosx-sdk=/Developer/SDKs/MacOSX10.8.sdk \
