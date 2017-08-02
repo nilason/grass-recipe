@@ -28,11 +28,9 @@
   --with-includes=$PREFIX/include \
   --with-nls
 
-#  --with-proj \
-# --with-macosx-sdk=/Developer/SDKs/MacOSX10.8.sdk \
-#   --with-liblas=$PREFIX \ # "/Users/cmbarton/grass\_source/LAS/lasdist/bin/liblas-config" \
-#   --with-opencl \
-#   --with-nls
+# --with-macosx-sdk=/Developer/SDKs/MacOSX10.8.sdk
+# --with-liblas="/Users/cmbarton/grass\_source/LAS/lasdist/bin/liblas-config"
+# --with-opencl
 
 make GDAL_DYNAMIC=
 make bindist
