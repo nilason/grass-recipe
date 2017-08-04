@@ -52,6 +52,7 @@ if [ $(uname) == Darwin ]; then
 #  --with-macosx-sdk=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
 fi
 
+mkdir -p $PREFIX
 ./configure $CONFIGURE_FLAGS
 
 # --with-macosx-sdk=/Developer/SDKs/MacOSX10.8.sdk
