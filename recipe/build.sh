@@ -8,7 +8,7 @@ export CXX=$(which g++)
 # export CFLAGS="-fPIC $CFLAGS"
 # export CXXFLAGS="-fPIC $CXXFLAGS"
 
-CONFIGURE_FLAGS= \
+CONFIGURE_FLAGS="\
   --prefix=$PREFIX \
   --with-freetype \
   --with-freetype-includes=$PREFIX/include/freetype2 \
@@ -41,18 +41,19 @@ CONFIGURE_FLAGS= \
   --with-cairo-libs=$PREFIX/lib \
   --with-cairo-ldflags="-lcairo" \
   --with-libs=$PREFIX/lib \
-  --with-includes=$PREFIX/include
+  --with-includes=$PREFIX/include \
+"
 
 if [ $(uname) == Darwin ]; then
-  CONFIGURE_FLAGS=\
+  CONFIGURE_FLAGS="\
     $CONFIGURE_FLAGS \
     --with-opengl=aqua \
     --enable-macosx-app \
-    --with-opencl
+    --with-opencl \
+    "
 #  --with-macosx-sdk=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
 fi
 
-mkdir -p $PREFIX
 ./configure $CONFIGURE_FLAGS
 
 # --with-macosx-sdk=/Developer/SDKs/MacOSX10.8.sdk
