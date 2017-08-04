@@ -60,6 +60,6 @@ fi
 # --with-liblas="/Users/cmbarton/grass\_source/LAS/lasdist/bin/liblas-config"
 # --with-opencl
 
-make GDAL_DYNAMIC=
+make GDAL_DYNAMIC= > stdout.txt
 
 # make bindist
