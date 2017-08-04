@@ -34,15 +34,17 @@ CONFIGURE_FLAGS="\
   --with-fftw-includes=$PREFIX/include \
   --with-fftw-libs=$PREFIX/lib \
   --with-cxx \
+  --without-cairo \
   --without-readline \
   --enable-64bit \
-  --with-cairo \
-  --with-cairo-includes=$PREFIX/include/cairo \
-  --with-cairo-libs=$PREFIX/lib \
-  --with-cairo-ldflags="-lcairo" \
   --with-libs=$PREFIX/lib \
   --with-includes=$PREFIX/include \
 "
+
+#   --with-cairo \
+#   --with-cairo-includes=$PREFIX/include/cairo \
+#   --with-cairo-libs=$PREFIX/lib \
+#   --with-cairo-ldflags="-lcairo" \
 
 if [ $(uname) == Darwin ]; then
   CONFIGURE_FLAGS="\
@@ -60,7 +62,7 @@ fi
 # --with-liblas="/Users/cmbarton/grass\_source/LAS/lasdist/bin/liblas-config"
 # --with-opencl
 
-make GCAL_DYNAMIC= > out.txt 2>&1 || (tail -200 out.txt && echo "ERROR in make step" && exit -1)
+make GCAL_DYNAMIC= > out.txt 2>&1 || (tail -400 out.txt && echo "ERROR in make step" && exit -1)
 tail -50 out.txt
 
 # make bindist

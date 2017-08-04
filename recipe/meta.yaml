@@ -15,7 +15,7 @@ requirements:
     - numpy
     - gdal
     - freetype
-    - cairo
+    # - cairo
     - matplotlib
     - pandoc
     - pil
@@ -35,7 +35,7 @@ requirements:
     - numpy
     - gdal
     - freetype
-    - cairo
+    # - cairo
     - matplotlib
     - pandoc
     - pil
