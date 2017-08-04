@@ -60,7 +60,7 @@ fi
 # --with-liblas="/Users/cmbarton/grass\_source/LAS/lasdist/bin/liblas-config"
 # --with-opencl
 
-make GCAL_DYNAMIC= > out.txt 2>&1 || (tail -100 out.txt && echo "ERROR in make step" && exit -1)
+make GCAL_DYNAMIC= > out.txt 2>&1 || (tail -200 out.txt && echo "ERROR in make step" && exit -1)
 tail -50 out.txt
 
 # make bindist
