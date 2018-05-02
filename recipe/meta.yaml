@@ -1,9 +1,9 @@
 package:
   name: grass
-  version: 7.2.3
+  version: 7.4.0
 
 source:
-  url: https://grass.osgeo.org/grass72/source/grass-7.2.3.tar.gz
+  url: https://grass.osgeo.org/grass74/source/grass-7.4.0.tar.gz
   patches:
     - platform.make.in.patch [osx]
     - platform.make.in-linux.patch [linux]
