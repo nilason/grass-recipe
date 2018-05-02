@@ -2,6 +2,8 @@
 
 Home: https://grass.osgeo.org/
 
+Package license: GPLv2
+
 Recipe license: MIT
 
 Summary: Geographic Resources Analysis Support System
