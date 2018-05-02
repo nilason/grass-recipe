@@ -1,6 +1,5 @@
 language: generic
 os:
-# - linux
 - osx
 osx_image: xcode6.4
 env:
@@ -9,6 +8,7 @@ env:
   - MACOSX_DEPLOYMENT_TARGET="10.9"
   - TRAVIS_PYTHON_VERSION="2.7"
   - MINICONDA_URL_BASE="https://repo.continuum.io/miniconda/Miniconda2-latest"
+  - secure: WjHM3eT7Z3cYki8pf647Ody4xF9kaAFwce6KZ8sBgwHt4MNDC/oG3qSe40x5JBh7jobObpmRXUvHp9mK5sZEMY2hnSOdgERRwVioG0o/myhGj+Ju+XdKwaIlsiAFqJ7/7OqwuT+KsvU0q2QyGqAWK42VwCFNNbY3cvMr2RoM85OZExWd+hKe0EFfeTkAaqtNz2KIRzXjYcCjUOjziUzg3CVfMuKYAnELaiAo34i5b6zCM2DGzliEXnPGo2bktxnpf4SsCQfDIZwtLEoUSdxKGnGnLOA+V6E6f0Pr1DRY5J/ila3OrQhDbzXLB3b6zdGo9FA4+lO5bDWU4bPKhHAvDtkexTR124ieaj5R/6uhqynhV/kzfAt5q+9sYcG0hxCADhBmawNGO1FhXkhc6TPCm+K/knD42teUfZCrW7f3OjyZHi6w9QsO6vDCiBFFxBsYP4U2hC4xsZRZcY+7m2oEk0ENVtM/3NjH0n/0SqyJey0nqFN6x8g2iwwh8Gh1cdb43Pe9d1I6ixF78KWKO7IHOOpJcWN4vJD++uAGtZNN4vUqs8pcEKuvC4ZURDy3wQLdMbu/uQ+HwV6r676k9hyRBOcS6vAlvZjh/sG9lSc7F0AId8juBgFxwZx2Xzijp7mNVe5i7+mZ3TYwd+1b0WJXZC0e9xUUeKEcftFiL4htr8k=
 sudo: false
 before_install:
 - |
@@ -38,4 +38,5 @@ script:
 after_success:
 - curl https://raw.githubusercontent.com/csdms/ci-tools/master/anaconda_upload.py
   > $HOME/anaconda_upload.py
-- echo $ANACONDA_TOKEN | python $HOME/anaconda_upload.py ./recipe --channel=main --org=csdms-stack --old-build-string --token=-
+- echo $ANACONDA_TOKEN | python $HOME/anaconda_upload.py ./recipe --channel=main --org=csdms-stack
+  --old-build-string --token=-
