@@ -6,13 +6,6 @@ Recipe license: MIT
 
 Summary: Geographic Resources Analysis Support System
 
-# Build Status
-
-Linux, OSX: [![Build Status](https://travis-ci.org/csdms-stack/grass-recipe.svg?branch=master)](https://travis-ci.org/csdms-stack/grass-recipe)
-
-# grass
-Conda recipe for grass
-
 # Current build status
 
 OSX: [![TravisCI](https://travis-ci.org/csdms-stack/grass-recipe.svg?branch=master)](https://travis-ci.org/csdms-stack/grass-recipe)
