@@ -1,53 +1,89 @@
-{% set name = "grass" %}
-{% set version = "7.2" %}
-
 package:
-  name: {{ name }}
-  version: {{ version }}
+  name: grass
+  version: 7.2.2
 
 source:
-  url: https://grass.osgeo.org/grass72/source/grass-7.2.0.tar.gz
+  url: https://grass.osgeo.org/grass72/source/grass-7.2.2.tar.gz
+  patches:
+    - platform.make.in.patch [osx]
+    - platform.make.in-linux.patch [linux]
+    - loader.py.patch
+    - rules.make.patch [osx]
+    - rules.make.patch [linux]
+    - aclocal.m4.patch
+    - configure.patch
+    - install.make.patch
+    - module.make.patch [osx]
+    - shlib.make.patch [osx]
 
 requirements:
   build:
+    - clang_osx-64 [osx]
+    - clangxx_osx-64 [osx]
+    - gcc_linux-64 [linux]
+    - gxx_linux-64 [linux]
     - python
     - setuptools
     - numpy
-    - gdal
+    - gdal 2.0.*
     - freetype
-    # - cairo
+    - cairo
     - matplotlib
     - pandoc
     - pil
     - wxpython
     - sqlite
-    - fftw
     - jpeg
     - libpng
     - libtiff
+    - pkg-config [osx]
+    - libiconv
+    - fftw
     - blas
     - giflib
-    - pkg-config [osx]
+    - python.app [osx]
+    - proj4
+    - geos
+    - krb5
 
   run:
+    - libgcc
     - python
     - setuptools
     - numpy
-    - gdal
+    - gdal 2.0.*
     - freetype
-    # - cairo
+    - cairo
     - matplotlib
     - pandoc
     - pil
     - wxpython
     - sqlite
-    - fftw
     - jpeg
     - libpng
     - libtiff
+    - pkg-config [osx]
+    - libiconv
+    - fftw
     - blas
     - giflib
-    - pkg-config [osx]
+    - python.app [osx]
+    - proj4
+    - geos
+    - krb5
 
 build:
   number: 0
+
+about:
+  summary: Geographic Resources Analysis Support System
+  description: |
+    GRASS GIS, commonly referred to as GRASS (Geographic Resources
+    Analysis Support System), is a free and open source Geographic
+    Information System (GIS) software suite used for geospatial data
+    management and analysis, image processing, graphics and maps
+    production, spatial modeling, and visualization.
+  home: https://grass.osgeo.org/
+  license: GPLv2
+  dev_url: https://grass.osgeo.org/development/
+

@@ -1,12 +1,13 @@
 #! /bin/bash
 
-export PATH=/usr/bin:/bin:/usr/sbin:/etc:/usr/lib:$PREFIX/bin
+export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/etc:/usr/lib
 
-export CC=$(which gcc)
-export CXX=$(which g++)
-
-# export CFLAGS="-fPIC $CFLAGS"
-# export CXXFLAGS="-fPIC $CXXFLAGS"
+if [ $(uname) == Darwin ]; then
+  export GRASS_PYTHON=$(which pythonw)
+else
+  export GRASS_PYTHON=$(which python)
+  export LD_LIBRARY_PATH=$PREFIX/lib
+fi
 
 CONFIGURE_FLAGS="\
   --prefix=$PREFIX \
@@ -34,35 +35,32 @@ CONFIGURE_FLAGS="\
   --with-fftw-includes=$PREFIX/include \
   --with-fftw-libs=$PREFIX/lib \
   --with-cxx \
-  --without-cairo \
+  --with-cairo \
+  --with-cairo-includes=$PREFIX/include/cairo \
+  --with-cairo-libs=$PREFIX/lib \
+  --with-cairo-ldflags="-lcairo" \
   --without-readline \
   --enable-64bit \
   --with-libs=$PREFIX/lib \
   --with-includes=$PREFIX/include \
 "
 
-#   --with-cairo \
-#   --with-cairo-includes=$PREFIX/include/cairo \
-#   --with-cairo-libs=$PREFIX/lib \
-#   --with-cairo-ldflags="-lcairo" \
-
 if [ $(uname) == Darwin ]; then
   CONFIGURE_FLAGS="\
     $CONFIGURE_FLAGS \
     --with-opengl=aqua \
-    --enable-macosx-app \
-    --with-opencl \
     "
+#    --enable-macosx-app
+#    --with-opencl
 #  --with-macosx-sdk=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
 fi
 
 ./configure $CONFIGURE_FLAGS
+make -j4 GDAL_DYNAMIC= > out.txt 2>&1 || (tail -400 out.txt && echo "ERROR in make step" && exit -1)
+# make -j4 GDAL_DYNAMIC=
+make -j4 install
 
-# --with-macosx-sdk=/Developer/SDKs/MacOSX10.8.sdk
-# --with-liblas="/Users/cmbarton/grass\_source/LAS/lasdist/bin/liblas-config"
-# --with-opencl
-
-make GCAL_DYNAMIC= > out.txt 2>&1 || (tail -400 out.txt && echo "ERROR in make step" && exit -1)
-tail -50 out.txt
-
-# make bindist
+# for d in bin etc include lib scripts share; do
+#   cp -r dist.*/$d $PREFIX
+# done
+# cp -r dist.*/etc/python/grass $PREFIX/lib/python2.7/site-packages
