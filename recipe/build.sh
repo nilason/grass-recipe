@@ -4,6 +4,7 @@ export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/etc:/usr/lib
 
 if [ $(uname) == Darwin ]; then
   export GRASS_PYTHON=$(which pythonw)
+  export CONDA_BUILD_SYSROOT=$(xcrun --show-sdk-path)
 else
   export GRASS_PYTHON=$(which python)
   export LD_LIBRARY_PATH=$PREFIX/lib
@@ -49,6 +50,8 @@ if [ $(uname) == Darwin ]; then
   CONFIGURE_FLAGS="\
     $CONFIGURE_FLAGS \
     --with-opengl=aqua \
+    --with-macosx-archs="x86_64" \
+    --with-macosx-sdk=$CONDA_BUILD_SYSROOT \
     "
 #    --enable-macosx-app
 #    --with-opencl

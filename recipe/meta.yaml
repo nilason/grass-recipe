@@ -1,9 +1,9 @@
 package:
   name: grass
-  version: 7.4.1
+  version: 7.8.3
 
 source:
-  url: https://grass.osgeo.org/grass74/source/grass-7.4.1.tar.gz
+  url: https://grass.osgeo.org/grass78/source/grass-7.8.3.tar.gz
   patches:
     - platform.make.in.patch [osx]
     - platform.make.in-linux.patch [linux]
@@ -22,15 +22,15 @@ requirements:
     - clangxx_osx-64 [osx]
     - gcc_linux-64 [linux]
     - gxx_linux-64 [linux]
-    - python
+    - python=3.7.8
     - setuptools
     - numpy
-    - gdal 2.0.*
+    - gdal >2
     - freetype
     - cairo
     - matplotlib
     - pandoc
-    - pil
+    - pillow
     - wxpython
     - sqlite
     - jpeg
@@ -41,17 +41,22 @@ requirements:
     - fftw
     - blas
     - giflib
-    - python.app [osx]
-    - proj4
+    - proj=6.2.1
     - geos
     - krb5
+    - gettext
+    - ghostscript
+    - zstd
+    - pdal
+    - ply
+    - poppler
 
   run:
     - libgcc
-    - python
+    - python=3.7.8
     - setuptools
     - numpy
-    - gdal 2.0.*
+    - gdal >2
     - freetype
     - cairo
     - matplotlib
@@ -67,10 +72,15 @@ requirements:
     - fftw
     - blas
     - giflib
-    - python.app [osx]
-    - proj4
+    - proj=6.2.1
     - geos
     - krb5
+    - gettext
+    - ghostscript
+    - zstd
+    - pdal
+    - ply
+    - poppler
 
 build:
   number: 0
